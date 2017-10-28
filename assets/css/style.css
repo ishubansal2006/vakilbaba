@@ -883,7 +883,7 @@ nav.navbar {
   font-size: 16px;
   font-weight: 500px;
   line-height: 27px;
-  padding: 20px 22px;
+  padding: 20px 10px;
   text-transform: none;
   position:relative;
   text-decoration: none;
@@ -4269,8 +4269,9 @@ table.info-tabel tr td {
   display:none;
 }
 .navbar-header {
-	display:inline-block;
+	/* display:inline-block; */
 	margin:0 !important;
+	padding:5px;
 }
 #menu_slide {
 	margin:0px;
@@ -4289,6 +4290,7 @@ table.info-tabel tr td {
 }
 #navigation.collapse.navbar-collapse {
   float: none;
+
 }
 #search_toggle {
 	display:block;
@@ -4694,7 +4696,7 @@ h3 {
 	margin:0 auto 60px;
 }
 .banner-section::after {
-	height:100%;
+	/* height:100%; */
 }
 .banner-section {
   padding: 80px 0;
@@ -5250,7 +5252,7 @@ h3 {
   float: none !important;
 }
 .header_style2 .navbar-collapse.collapse.in {
-  display: block !important;
+  display: block;
 }
 .header_style2 .header_wrap {
 	float:none;
@@ -5844,3 +5846,69 @@ a:-webkit-any-link {
   .progressBar .bar{background-color:#218DEA;width:0;height:14px}
   .progressBar .percent{display:inline-block;color:#fff;top:-2px;width:100%}
 /*my style: end*/
+
+body
+{
+	overflow-x:hidden !important;
+}
+@media (min-width: 768px){
+#navigation.collapse.navbar-collapse {
+    float: left;
+    
+display: table !important;}}
+.login_btn
+{
+	    padding: 5px !important;
+}
+.user-login
+{
+	display:inline-flex;
+	margin-right: 25px;
+}
+.user_login{ display:inline-flex;}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 10px;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 131px;
+    margin: 2px 0 0;
+    list-style: none;
+    font-size: 14px;
+    background-color: #ffbc51;
+    -webkit-box-shadow: 0 5px 5px #2f373f;
+    box-shadow: 0 5px 5px #2f373f;
+    background-clip: padding-box;
+    text-transform: capitalize;
+}
+.dropdown-menu>li {
+    border-top: 1px solid #356697;
+    text-transform: none;
+	margin:0px;
+}
+@media (max-width: 767px){
+.user-login
+{
+	    margin-top: -27px;
+    position: relative;
+    top: -55px;
+    left: -40px;
+}
+.img-mobile{
+	    margin-left: 109px;
+    /* float: none; */
+    margin-top: 16px;
+    height: 92px;
+}
+.user_login{
+   
+    margin-right:10px;
+}
+#banner
+{
+	    margin-top: 165px !important;
+}
+}

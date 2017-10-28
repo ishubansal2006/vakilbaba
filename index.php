@@ -68,6 +68,7 @@ function searchAdvocate() {
 	
 	document.getElementById("frmSearchAdv").submit();
 }
+
 </script>
 
 </head>
