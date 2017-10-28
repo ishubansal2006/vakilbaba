@@ -1,3 +1,61 @@
+<?php 
+session_start();
+include('includes/config.php');
+error_reporting(0);
+
+/*if (isset($_POST['submit'])) {
+	$name=$_POST['name'];
+	$gender=$_POST['gender'];
+	$email=$_POST['email'];
+	$mobile=$_POST['mobile'];
+	$language=$_POST['language'];
+	$address=$_POST['address'];
+	$pin=$_POST['pin'];
+	$city=$_POST['city'];
+	$state=$_POST['state'];
+	$expertise=$_POST['expertise'];
+	$experience=$_POST['experience'];
+	$court=$_POST['court'];
+	$barcode=$_POST['barcode'];
+	$telephone=$_POST['telcon'];
+	$meeting=$_POST['mecon'];
+	$casefee=$_POST['casefee'];
+	$password = md5($_POST['password']);
+	$about=$_POST['bio'];
+
+$sql="INSERT INTO  advocatedetails (AdvocateName,Gender,Email,Mobile, Language, Address, Pin, City, State, Expertise,Experience,Court,Barcode,TelephoneConsultantFee,ConsultantFee, CaseFilingFee,Password,About) 
+VALUES(:name,:gender,:email,:mobile,:language,:address,:pin,:city,:state,:expertise,:experience,:court,:barcode,:telephone,:meeting,:casefee,:password, :about)";
+$query = $dbh->prepare($sql);
+$query->bindParam(':name',$name,PDO::PARAM_STR);
+$query->bindParam(':gender',$gender,PDO::PARAM_STR);
+$query->bindParam(':email',$email,PDO::PARAM_STR);
+$query->bindParam(':mobile',$mobile,PDO::PARAM_STR);
+$query->bindParam(':language',$language,PDO::PARAM_STR);
+$query->bindParam(':address',$address,PDO::PARAM_STR);
+$query->bindParam(':pin',$pin,PDO::PARAM_STR);
+$query->bindParam(':city',$city,PDO::PARAM_STR);
+$query->bindParam(':state',$state,PDO::PARAM_STR);
+$query->bindParam(':expertise',$expertise,PDO::PARAM_STR);
+$query->bindParam(':experience',$experience,PDO::PARAM_STR);
+$query->bindParam(':court',$court,PDO::PARAM_STR);
+$query->bindParam(':barcode',$barcode,PDO::PARAM_STR);
+$query->bindParam(':telephone',$telephone,PDO::PARAM_STR);
+$query->bindParam(':meeting',$meeting,PDO::PARAM_STR);
+$query->bindParam(':casefee',$casefee,PDO::PARAM_STR);
+$query->bindParam(':password',$password,PDO::PARAM_STR);
+$query->bindParam(':about',$about,PDO::PARAM_STR);
+$query->execute();
+$lastInsertId = $dbh->lastInsertId();
+
+	if(true) {
+		echo "<script>alert('Registration successfull. Now you can login');</script>";
+	} else {
+		echo "<script>alert('Something went wrong. Please try again');</script>";
+	}
+}*/
+
+?>
+
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -25,7 +83,7 @@
 </head>
 <body>	
 	<!--header-->
-<?php include 'includes/header.php';?>
+<?php include('includes/header.php');?>
 <!--/header--> 
 
 		<div class="container" style="margin-top: 100px">
@@ -51,7 +109,7 @@
 
 			<div class="row">
 				
-				<form action="" method="POST">
+				<!-- <form action="#" method="POST"> -->
 					<div class="form-group">
 						<label for="name">Name:</label>
 						<input type="text" name="name" placeholder="your name" class="form-control" required/>
@@ -90,7 +148,41 @@
 					</div>
 					<div class="form-group">
 						<label for="name">State:</label>
-						<input type="text" name="state" placeholder="your state" class="form-control" required/>
+						<!--<input type="text" name="state" placeholder="your state" class="form-control" required/>-->
+						<select class="form-control" name="state" required>
+							<option value="">Select State</option>
+							<option value="andhra_pradesh">Andhra Pradesh</option>
+							<option value="arunachal_pradesh">Arunachal Pradesh</option>
+							<option value="assam">Assam</option>
+							<option value="bihar">Bihar</option>
+							<option value="chandigarh">Chandigarh</option>
+							<option value="chhattisgarh">Chhattisgarh</option>
+							<option value="delhi">Delhi</option>
+							<option value="goa">Goa</option>
+							<option value="gujarat">Gujarat</option>
+							<option value="haryana">Haryana</option>
+							<option value="himachal_pradesh">Himachal Pradesh</option>
+							<option value="jammu_and_kashmir">Jammu and Kashmir</option>
+							<option value="jharkhand">Jharkhand</option>
+							<option value="karnataka">Karnataka</option>
+							<option value="kerala">Kerala</option>
+							<option value="madhya_pradesh">Madhya Pradesh</option>
+							<option value="maharashtra">Maharashtra</option>
+							<option value="manipur">Manipur</option>
+							<option value="meghalaya">Meghalaya</option>
+							<option value="mizoram">Mizoram</option>
+							<option value="nagaland">Nagaland</option>
+							<option value="odisha">Odisha</option>
+							<option value="punjab">Punjab</option>
+							<option value="rajasthan">Rajasthan</option>
+							<option value="sikkim">Sikkim</option>
+							<option value="tamil_nadu">Tamil Nadu</option>
+							<option value="telangana">Telangana</option>
+							<option value="tripura">Tripura</option>
+							<option value="uttar_pradesh">Uttar Pradesh</option>
+							<option value="uttarakhand">Uttarakhand</option>
+							<option value="west_bengal">West Bengal</option>
+						</select>
 					</div>
 
 					<div class="form-group">
@@ -149,11 +241,11 @@
 					<div class="form-group">
 						<input type="hidden" name="image" value=''>
 						<input type="submit" name="submit" class="btn btn-primary register" style="background-color: #FFBC51; color: #000">
-						<p class="error text-danger"></p>
-						<p class="success text-success"></p>
+						<span class="error text-danger"></span>
+						<span class="success text-success"></span>
 					</div>
 					
-					</form>
+					<!-- </form> -->
 			</div>
 			</div>				
 </div>	
