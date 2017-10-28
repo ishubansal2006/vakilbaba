@@ -8,29 +8,32 @@ session_start();
 <header>
   
   <!-- Navigation -->
-  <nav id="navigation_bar" class="navbar navbar-default navbar-fixed-top">
+   <nav id="navigation_bar" class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
       <div class="header_wrap  pull-right">
+	  
         <div class="user_login" style="font-size: 15px; border:none; color: #fff; font-size: 18px; font-weight: bold;">
           <i class="fa fa-phone" style="font-size:15px; margin-right:3px;">+91- 7900127900</i><br>
           <i class="fa fa-envelop" style="font-size:15px;">support@vakilbaba.com</i>
          
         </div>
       </div>
+	 
       <div class="navbar-header">
        <a class="pull-left navbar-brand navbar-brand-fix" href="index.php">
         <img class="img-responsive img-mobile" src="assets/images/logo.png" alt="image" class="img-responsive"/>
       </a> 
      <p style="margin-top: -55px"> </p>
         <!--<button id="menu_slide" data-target="#navigation" aria-expanded="false" data-toggle="collapse" class="navbar-toggle collapsed" type="button"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>-->
-        <div class="navbar-header">
+      
+
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation" id="menu_slide">
                             <span class="sr-only">Toggle navigation</span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                    </div>
+                  
       </div>
         <div class="header_wrap">  
         <div class="header_search">

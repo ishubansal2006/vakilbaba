@@ -39,11 +39,12 @@ $arr2_count = count($car_array2);
 <meta name="description" content="">
 <title>vakil Baba</title>
 <!--Bootstrap -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
 <link rel="stylesheet" href="assets/css/style.css" type="text/css">
+<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+
 <link rel="stylesheet" href="assets/css/owl.carousel.css" type="text/css">
 <link rel="stylesheet" href="assets/css/owl.transitions.css" type="text/css">
 <link href="assets/css/slick.css" rel="stylesheet">
@@ -68,7 +69,6 @@ function searchAdvocate() {
 	
 	document.getElementById("frmSearchAdv").submit();
 }
-
 </script>
 
 </head>
@@ -708,14 +708,14 @@ EXPERIENCE</p>
 <!--/Forgot-password-Form --> 
 
 <!-- Scripts --> 
-<script src="assets/js/jquery.min.js"></script>
+<!-- <script src="assets/js/jquery.min.js"></script>-->
 <script src="assets/js/bootstrap.min.js"></script> 
 <script src="assets/js/interface.js"></script> 
-<!--bootstrap-slider-JS--> 
+
 <script src="assets/js/bootstrap-slider.min.js"></script> 
-<!--Slider-JS--> 
+
 <script src="assets/js/slick.min.js"></script> 
-<script src="assets/js/owl.carousel.min.js"></script>
+<script src="assets/js/owl.carousel.min.js"></script> 
 
     <script type="text/javascript">
       function activatePlacesSearch(){
