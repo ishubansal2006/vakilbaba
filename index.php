@@ -39,8 +39,10 @@ $arr2_count = count($car_array2);
 <meta name="description" content="">
 <title>vakil Baba</title>
 <!--Bootstrap -->
+<script src="assets/js/bootstrap.min.js"></script> 
 <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
 <link rel="stylesheet" href="assets/css/style.css" type="text/css">
+<script src="assets/js/jquery.min.js"></script>
 <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
@@ -708,8 +710,8 @@ EXPERIENCE</p>
 <!--/Forgot-password-Form --> 
 
 <!-- Scripts --> 
-<!-- <script src="assets/js/jquery.min.js"></script>-->
-<script src="assets/js/bootstrap.min.js"></script> 
+ 
+
 <script src="assets/js/interface.js"></script> 
 
 <script src="assets/js/bootstrap-slider.min.js"></script> 
