@@ -2,37 +2,46 @@
 session_start();
 error_reporting(0);
 include('includes/config.php');
-if(strlen($_SESSION['login'])==0)
+if(strlen($_SESSION['submit'])==0)
   { 
 header('location:index.php');
 }
 else{
 if(isset($_POST['updateprofile']))
   {
-$name=$_POST['fullname'];
-$mobileno=$_POST['mobilenumber'];
+$email=$_SESSION['email'];
+$name=$_POST['name'];
+$mobileno=$_POST['mobileno'];
+$expertise=$_POST['expertise'];
+$experience=$_POST['experience'];
+$court=$_POST['court'];
+$consultantfee=$_POST['consultantfee'];
+$telfee=$_POST['telfee'];
+$filingfee=$_POST['filingfee'];
 $adress=$_POST['address'];
 $city=$_POST['city'];
-$email=$_SESSION['login'];
-$sql="update vk_advocates set usr_usrname=:name,usr_mobile=:mobileno,usr_address=:adress,usr_city=:city, where usr_email=:email";
+$pin=$_POST['pin'];
+$state=$_POST['state'];
+$sql="update advocatedetails set AdvocateName=:name,Mobile=:mobileno,Expertise=:expertise,Experience=:experience,Court=:court,ConsultantFee=:consultantfee,TelephoneConsultantFee=:telfee,CaseFilingFee=:filingfee,Address=:adress,City=:city,Pin=:pin,State=:state where Email=:email";
 $query = $dbh->prepare($sql);
 $query->bindParam(':name',$name,PDO::PARAM_STR);
 $query->bindParam(':mobileno',$mobileno,PDO::PARAM_STR);
+$query->bindParam(':expertise',$expertise,PDO::PARAM_STR);
+$query->bindParam(':experience',$experience,PDO::PARAM_STR);
+$query->bindParam(':court',$court,PDO::PARAM_STR);
+$query->bindParam(':consultantfee',$consultantfee,PDO::PARAM_STR);
+$query->bindParam(':telfee',$telfee,PDO::PARAM_STR);
+$query->bindParam(':filingfee',$filingfee,PDO::PARAM_STR);
 $query->bindParam(':adress',$adress,PDO::PARAM_STR);
 $query->bindParam(':city',$city,PDO::PARAM_STR);
-$query->bindParam(':email',$email,PDO::PARAM_STR);
+$query->bindParam(':pin',$pin,PDO::PARAM_STR);
+$query->bindParam(':state',$state,PDO::PARAM_STR);
 $query->execute();
-if ($query==true) {
-  $msg="Profile Updated Successfully";
-  echo "$msg";
-}
-else{
-  echo "Unable to process request at the moment";
-}
+$msg="Profile Updated Successfully";
 }
 
 ?>
-  <!DOCTYPE HTML>
+<!DOCTYPE HTML>
 <html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -40,34 +49,27 @@ else{
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="keywords" content="">
 <meta name="description" content="">
-<title> | My Profile</title>
+<title>Vakil baba | Profile Page</title>
 <!--Bootstrap -->
 <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
-<!--Custome Style -->
 <link rel="stylesheet" href="assets/css/style.css" type="text/css">
-<!--OWL Carousel slider-->
 <link rel="stylesheet" href="assets/css/owl.carousel.css" type="text/css">
 <link rel="stylesheet" href="assets/css/owl.transitions.css" type="text/css">
-<!--slick-slider -->
 <link href="assets/css/slick.css" rel="stylesheet">
-<!--bootstrap-slider -->
 <link href="assets/css/bootstrap-slider.min.css" rel="stylesheet">
-<!--FontAwesome Font Style -->
 <link href="assets/css/font-awesome.min.css" rel="stylesheet">
 
-<!-- SWITCHER -->
-		<link rel="stylesheet" id="switcher-css" type="text/css" href="assets/switcher/css/switcher.css" media="all" />
-		<link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/orange.css" title="orange" media="all" />
-		<link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/blue.css" title="blue" media="all" />
-		<link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/pink.css" title="pink" media="all" />
-		<link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/green.css" title="green" media="all" />
-		<link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/purple.css" title="purple" media="all" />
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/images/favicon-icon/apple-touch-icon-144-precomposed.png">
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/images/favicon-icon/apple-touch-icon-114-precomposed.html">
 <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/images/favicon-icon/apple-touch-icon-72-precomposed.png">
 <link rel="apple-touch-icon-precomposed" href="assets/images/favicon-icon/apple-touch-icon-57-precomposed.png">
 <link rel="shortcut icon" href="assets/images/favicon-icon/favicon.png">
 <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet"> 
+</head>
+<body>  
+  <!--header-->
+<?php include('includes/header.php');?>
+<!--/header--> 
  <style>
     .errorWrap {
     padding: 10px;
@@ -88,7 +90,6 @@ else{
     </style>
 </head>
 <body>
-
         
 <!--Header-->
 <?php include('includes/header.php');?>
@@ -106,17 +107,15 @@ else{
       </ul>
     </div>
   </div>
-  <!-- Dark Overlay-->
-  <div class="dark-overlay"></div>
-</section>
+  </section>
 <!-- /Page Header--> 
 
 
 <?php 
-$useremail=$_SESSION['login'];
-$sql = "SELECT * from vk_advocates where usr_email=:useremail";
+$email=$_SESSION['email'];
+$sql = "SELECT * from advocatedetails where Email=:email";
 $query = $dbh -> prepare($sql);
-$query -> bindParam(':useremail',$useremail, PDO::PARAM_STR);
+$query -> bindParam(':email',$email, PDO::PARAM_STR);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
 $cnt=1;
@@ -131,45 +130,73 @@ foreach($results as $result)
       </div>
 
       <div class="dealer_info">
-        <h5><?php echo htmlentities($result->usr_usrname);?></h5>
-        <p><?php echo htmlentities($result->usr_address);?><br>
-          <?php echo htmlentities($result->usr_city);?></p>
-      </div>
+        <h5><?php echo htmlentities($result->AdvocateName);?></h5>
+        <p><?php echo htmlentities($result->Expertise);?><br>
+    </div>
     </div>
   
     <div class="row">
-      <div class="col-md-3 col-sm-3">
-        <?php include('includes/sidebar.php');?>
-      <div class="col-md-6 col-sm-8">
+            <div class="col-md-6 col-sm-8">
         <div class="profile_wrap">
-          <h5 class="uppercase underline">Genral Settings</h5>
+          <h5 class="uppercase underline">Profile Settings</h5>
           <?php  
          if($msg){?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php }?>
           <form  method="post">
            <div class="form-group">
-              <label class="control-label">Reg Date -</label>
-             <?php echo htmlentities($result->add_date);?>
-            </div>
-             <?php if($result->UpdationDate!=""){?>
-            <div class="form-group">
-              <label class="control-label">Last Update at  -</label>
-             <?php echo htmlentities($result->mod_date);?>
-            </div>
-            <?php } ?>
-            <div class="form-group">
-              <label class="control-label">Full Name</label>
-              <input class="form-control white_bg" name="fullname" value="<?php echo htmlentities($result->usr_usrname);?>" id="fullname" type="text"  required>
+              <label class="control-label">Expertise -</label>
+             <?php echo htmlentities($result->Expertise);?>
             </div>
             <div class="form-group">
-              <label class="control-label">Email Address</label>
-              <input class="form-control white_bg" value="<?php echo htmlentities($result->usr_email);?>" name="emailid" id="email" type="email" required readonly>
+              <label class="control-label">Experience -</label>
+             <?php echo htmlentities($result->Experience);?>
             </div>
             <div class="form-group">
-              <label class="control-label">Phone Number</label>
-              <input class="form-control white_bg" name="mobilenumber" value="<?php echo htmlentities($result->usr_mobile);?>" id="phone-number" type="text" required>
+              <label class="control-label">Name</label>
+              <input class="form-control white_bg" name="name" value="<?php echo htmlentities($result->AdvocateName);?>" id="name" type="text"  required>
             </div>
-            
-                        <?php }} ?>
+            <div class="form-group">
+              <label class="control-label">Phone</label>
+              <input class="form-control white_bg" name="mobileno" value="<?php echo htmlentities($result->Mobile);?>" id="mobileno" type="text"  required>
+            </div>
+            <div class="form-group">
+              <label class="control-label">Expertise</label>
+              <input class="form-control white_bg" name="expertise" value="<?php echo htmlentities($result->Expertise);?>" id="expertise" type="text" required>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label">Experience</label>
+              <input class="form-control white_bg" value="<?php echo htmlentities($result->EmailId);?>" name="experience" id="experience" type="text" required readonly>
+            </div>
+              <div class="form-group">
+              <label class="control-label">Court</label>
+              <input class="form-control white_bg" value="<?php echo htmlentities($result->court);?>" name="court" placeholder="court" id="court" type="text" >
+            </div>
+            <div class="form-group">
+              <label class="control-label">Consultant Fee</label>
+              <input class="form-control white_bg" name="consultantfee" value="<?php echo htmlentities($result->Court);?>" placeholder="consultantfee" id="consultantfee" type="text" >
+            </div>
+            <div class="form-group">
+              <label class="control-label">telfee</label>
+              <input class="form-control white_bg"  id="telfee" name="telfee" value="<?php echo htmlentities($result->TelephoneConsultantFee);?>" type="text">
+            </div>
+            <div class="form-group">
+              <label class="control-label">Address</label>
+              <input class="form-control white_bg" id="adress" name="adress" value="<?php echo htmlentities($result->Address);?>" type="text">
+            </div>
+            <div class="form-group">
+              <label class="control-label">City</label>
+              <input class="form-control white_bg" id="city" name="city" value="<?php echo htmlentities($result->City);?>" type="text">
+            </div>
+            <div class="form-group">
+              <label class="control-label">Pin</label>
+              <input class="form-control white_bg" id="pin" name="pin" value="<?php echo htmlentities($result->Pin);?>" type="text">
+            </div>
+            <div class="form-group">
+              <label class="control-label">State</label>
+              <input class="form-control white_bg" id="state" name="state" value="<?php echo htmlentities($result->State);?>" type="text">
+            </div>
+
+            <?php }} ?>
            
             <div class="form-group">
               <button type="submit" name="updateprofile" class="btn">Save Changes <span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></button>
@@ -177,7 +204,6 @@ foreach($results as $result)
           </form>
         </div>
       </div>
-    </div>
   </div>
 </section>
 <!--/Profile-setting--> 

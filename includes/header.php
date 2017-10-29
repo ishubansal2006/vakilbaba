@@ -50,14 +50,14 @@ session_start();
 </style>
 <ul class="user-login">
                          <li class="dropdown">
-                                 <a href="advocate-signup.php" class="dropdown-toggle login_btn btn-xs uppercase" data-hover="dropdown" data-toggle="dropdown" style="background-color: #FFBC51; ">Advocate Panel <b class="caret"></b></a>
+                                 <a href="" class="dropdown-toggle login_btn btn-xs uppercase" data-hover="dropdown" data-toggle="dropdown" style="background-color: #FFBC51; ">Advocate Panel <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="" runat="server">Login</a></li>
+                                    <li><a href="advocate-login.php" runat="server">Login</a></li>
                                     <li><a href="advocate-signup.php" runat="server">SignUp</a></li>
                                 </ul>
                             </li>
 							<li class="dropdown">
-                                 <a href="advocate-signup.php" class="dropdown-toggle login_btn btn-xs uppercase" data-hover="dropdown" data-toggle="dropdown" style="background-color: #FFBC51; ">Customer <b class="caret"></b></a>
+                                 <a href="" class="dropdown-toggle login_btn btn-xs uppercase" data-hover="dropdown" data-toggle="dropdown" style="background-color: #FFBC51; ">Customer <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="" runat="server">Login</a></li>
                                     <li><a href="" runat="server">SignUp</a></li>
