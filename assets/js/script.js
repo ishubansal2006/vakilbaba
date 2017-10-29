@@ -2,6 +2,9 @@ $('document').ready(function(){
 
 	function reset() {
 		$('input[name="name"]').val('');
+		$('input[name="image_name"]').val('');
+		$('input[name="image_upload_file"]').val('');
+		$("#imgArea>img").prop('src', '');    
 		$('select[name="gender"]').val('');
 		$('input[name="email"]').val('');
 		$('input[name="mobile"]').val('');
@@ -25,6 +28,17 @@ $('document').ready(function(){
 	$('.register').on('click',function(){
 
 		var btn = $(this);
+		
+		var image     = $('input[name="image_name"]').val();
+		if (image === "") {
+			$('input[name="image_upload_file"]').css("border", "2px solid red");
+			$('input[name="image_upload_file"]').focus();
+			$('.error').html('Please upload Advocate Image!!');
+			return false;
+		} else {
+			$('input[name="image_upload_file"]').css("border", "none");
+		}
+		
 		var name       = $('input[name="name"]').val();
 		if (name === "") {
 			$('input[name="name"]').css("border-color", "red");
@@ -220,13 +234,6 @@ $('document').ready(function(){
 		} else {
 			$('input[name="retype"]').css("border-color", "initial");
 		}
-		
-		var image     = $('input[name="image"]').val();
-		/*if (name === "") {
-			$('input[name="name"]').css("border-color", "red");
-		} else {
-			$('input[name="name"]').css("border-color", "initial");
-		}*/
 
 		if (password !== retype) {
 			$('.error').html('password did not matched !');
@@ -328,7 +335,7 @@ console.log(html);
       bar.width(percentVal)
       percent.html(percentVal);
       $("#imgArea>img").prop('src',obj.image_medium);    
-      $('input[name="image"]').val(obj.name); 
+      $('input[name="image_name"]').val(obj.name); 
     }else{
       alert(obj.error);
     }

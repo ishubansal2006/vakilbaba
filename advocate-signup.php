@@ -100,6 +100,7 @@ $lastInsertId = $dbh->lastInsertId();
                       </div>
                         
                       <label for="image_upload_file">Choose image
+						<input type="hidden" name="image_name" id="image_name" />
 	                    <input type="file" accept="image/*" name="image_upload_file" id="image_upload_file" placeholder="upload image">
                      </label>
                   

@@ -424,7 +424,7 @@ a:hover {
 							<div class="panel panel-warning">
 							<div class="panel-heading"></div>
 							  <div class="panel-body">
-							  <a href="advocate-profile.php?id=<?php echo $row->AdvocateId; ?>"><img width="205.5" height="137" src="<?= $row->ProfileImage == NULL ? 'assets\images\man.png' : $row->ProfileImage;?>" alt=""></a>
+							  <a href="advocate-profile.php?id=<?php echo $row->Id; ?>"><img width="205.5" height="137" src="<?= $row->image == NULL ? 'assets\images\man.png' : 'uploades/medium/'.$row->image;?>" alt=""></a>
 							  </div>
 							<div class="panel-footer">
 								<span style="font-size:14px;"><?php echo $row->AdvocateName; ?></span>
@@ -467,7 +467,7 @@ a:hover {
 							<div class="panel panel-warning">
 							<div class="panel-heading"></div>
 							  <div class="panel-body">
-							  <a href="advocate-profile.php?id=<?php echo $row->AdvocateId; ?>"><img width="205.5" height="137" src="<?= $row->ProfileImage == NULL ? 'assets\images\man.png' : $row->ProfileImage;?>" alt=""></a>
+							  <a href="advocate-profile.php?id=<?php echo $row->Id; ?>"><img width="205.5" height="137" src="<?= $row->ProfileImage == NULL ? 'assets\images\man.png' : $row->ProfileImage;?>" alt=""></a>
 							  </div>
 							<div class="panel-footer">
 								<span style="font-size:14px;"><?php echo $row->AdvocateName; ?></span>

@@ -147,13 +147,13 @@ function searchAdvocate() {
 			foreach($array as $row): ?>
 		<div class="col-md-3">
 			<div class="card" style="width: 15rem;">
-				<img class="card-img-top" height="100" width="100" src="<?= $row->ProfileImage == NULL ? 'assets\images\man.png' : $row->ProfileImage;?>" alt="Card image cap">
+				<img class="card-img-top" height="100" width="100" src="<?= $row->image == NULL ? 'assets\images\man.png' : 'uploades/medium/'.$row->image;?>" alt="Card image cap">
 				<div class="card-block">
-					<input type="hidden" id="advocate_<?php echo $row->AdvocateId; ?>" value="<?php echo $row->AdvocateId; ?>" />
+					<input type="hidden" id="advocate_<?php echo $row->Id; ?>" value="<?php echo $row->Id; ?>" />
 					<h4 class="card-title"><?php echo $row->AdvocateName; ?></h4>
 					<p class="card-text">Experience: <?= $row->Experience == NULL ? '0' : $row->Experience; ?> years</p>
           <p class="card-text">Expertise: <?= $row->Expertise == NULL ? '0' : $row->Expertise; ?></p>
-					<a class="btn" style="background-color: #FFBC51; color: #000" href="advocate-profile.php?id=<?php echo $row->AdvocateId; ?>">Go somewhere</a>
+					<a class="btn" style="background-color: #FFBC51; color: #000" href="advocate-profile.php?id=<?php echo $row->Id; ?>">Go somewhere</a>
 				</div>
 			</div>
 		</div>

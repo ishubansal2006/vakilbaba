@@ -22,29 +22,28 @@ if (isset($_POST['register'])) {
 	$meeting    =      escape_string($_POST['mecon']);
 	$casefee    =      escape_string($_POST['casefee']);
 	$about      =      escape_string($_POST['bio']);
+	$image      =      escape_string($_POST['image']);
 	$password   =    md5(escape_string($_POST['password']));
+	
 	$output = array('status'=>'false','error'=>'');
-if (get_user_by_email($email)) {
+	
+	if (get_user_by_email($email)) {
 		
 		$output['error'] = 'Email address already exists !';
 	
 	} else {
 
+		$sql="INSERT INTO advocatedetails(AdvocateName, Gender, Email, Mobile, Language, Address, Pin, City, State, Expertise, Experience, Court, Barcode, TelephoneConsultantFee,	ConsultantFee, CaseFilingFee, Password, About, image)VALUES( '{$name}', '{$gender}', '{$email}', '{$mobile}', '{$language}', '{$address}', '{$pin}', '{$city}', '{$state}', '{$expertise}', '{$experience}', '{$court}', '{$barcode}', '{$telephone}', '{$meeting}', '{$casefee}', '{$password}', '{$about}', '{$image}')";
 
-	$sql="INSERT INTO advocatedetails(AdvocateName, Gender, Email, Mobile, Language, Address, Pin, City, State, Expertise, Experience, Court, Barcode, TelephoneConsultantFee,	ConsultantFee, CaseFilingFee, Password, About)VALUES( '{$name}', '{$gender}', '{$email}', '{$mobile}', '{$language}', '{$address}', '{$pin}', '{$city}', '{$state}', '{$expertise}', '{$experience}', '{$court}', '{$barcode}', '{$telephone}', '{$meeting}', '{$casefee}', '{$password}', '{$about}')";
+		$result = mysqli_query($db, $sql);
+		echo mysqli_error($db);
+		// echo $sql;
+		confirm($result);
 
-	$result = mysqli_query($db, $sql);
-	echo mysqli_error($db);
-	// echo $sql;
-	confirm($result);
-
-	$output['status'] = 'success';
-	$output['error'] = '';
-
+		$output['status'] = 'success';
+		$output['error'] = '';
 	}
 
-	echo json_encode($output);	
-
-
+	echo json_encode($output);
 }
 ?>

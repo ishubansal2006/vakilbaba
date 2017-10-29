@@ -5,7 +5,7 @@ error_reporting(0);
 
 $advId = $_GET['id'];
 
-$sql = "SELECT * from advocatedetails WHERE AdvocateId=:AdvocateId";
+$sql = "SELECT * from advocatedetails WHERE Id=:AdvocateId";
 $query = $dbh -> prepare($sql);
 $query->bindParam(':AdvocateId', $advId, PDO::PARAM_INT);
 $query->execute();
@@ -207,7 +207,7 @@ body {
           <button type="button" class="btn btn-success" style="background-color: #FFBC51; color: #000">Book me!</button>  <button type="button" class="btn btn-info" style="background-color: #FFBC51; color: #000">Send me a message</button>
 <br>
         </div>
-      <div class="col-sm-2"><a href="/users" class="pull-right"><img title="profile image" class="img-circle img-responsive" src="<?= $array[0]->ProfileImage == NULL ? 'assets\images\man.png' : $array[0]->ProfileImage;?>"></a>
+      <div class="col-sm-2"><a href="" class="pull-right"><img title="profile image" class="img-circle img-responsive" src="<?= $array[0]->image == NULL ? 'assets\images\man.png' : 'uploades/small/'.$array[0]->image;?>"></a>
 
         </div>
     </div>
@@ -236,7 +236,7 @@ body {
         <div class="col-sm-9" style="" contenteditable="false">
             <div class="panel panel-default">
                 <div class="panel-heading">About Me</div>
-                <div class="panel-body"> <?php echo $array[0]->Description; ?>
+                <div class="panel-body"> <?php echo $array[0]->about; ?>
                 </div>
             </div>
            
