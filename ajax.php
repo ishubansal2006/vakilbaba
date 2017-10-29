@@ -1,7 +1,7 @@
 <?php require_once('includes/my_config.php') ?>
 <?php require_once('includes/functions.php') ?>
+<?php require_once 'phpmailer/PHPMailerAutoload.php'; ?>
 <?php 
-
 
 if (isset($_POST['register'])) {
 
@@ -39,6 +39,8 @@ if (isset($_POST['register'])) {
 		echo mysqli_error($db);
 		// echo $sql;
 		confirm($result);
+		
+		sendEmail($email, $name, $mobile, $address);
 
 		$output['status'] = 'success';
 		$output['error'] = '';
@@ -46,4 +48,37 @@ if (isset($_POST['register'])) {
 
 	echo json_encode($output);
 }
+
+	function sendEmail($email, $name, $mobile, $address) {
+		$mail = new PHPMailer();
+		$mail->IsSMTP();
+		$mail->Host = 'mail.vakilbaba.com';
+		$mail->SMTPSecure = 'tls';
+		$mail->Port = 587;
+		$mail->SMTPAuth = true;
+		$mail->Username = 'admin@vakilbaba.com';
+		$mail->Password = 'admin@123';
+
+		$mail->From = 'admin@vakilbaba.com';
+		$mail->FromName = 'vakilbaba Admin';
+		$mail->AddAddress($email);
+		$mail->Subject = 'New User Signup';
+		
+		$data = "\r\n A new user has signed up. Details of the user are :-\r\n\r\n Email: ".$email."\r\n Name: ".$name."\r\n Mobile No: ".$mobile."\r\n Address: ".$address."\r\n\r\n Regards,\r\n Vakilbaba Admin";
+		$mail->Body = $data;
+		$mail->SMTPOptions = array(
+			'ssl' => array(
+				'verify_peer' => false,
+				'verify_peer_name' => false,
+				'allow_self_signed' => true
+			));
+		
+		if($mail->send()) {
+			file_put_contents("error/error.txt", "\r\n".date("Y-m-d H:i:s"). " Email successfully sent for a new user signup with email :".$email. " ", FILE_APPEND);
+		} else {
+			file_put_contents("error/error.txt", "\r\n".date("Y-m-d H:i:s"). " Error occurred in sending email for a new user signup with email :".$email. " ", FILE_APPEND);
+		}
+	}
+
+
 ?>
