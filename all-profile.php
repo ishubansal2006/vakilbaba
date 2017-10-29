@@ -3,26 +3,41 @@ session_start();
 include('includes/config.php');
 error_reporting(0);
 
-$expertise = $_GET['type'];
-$expertise_per = "%$expertise%";
-$city = $_GET['city'];
+if (isset($_GET['type']) || isset($_GET['city_name'])) {
+	$expertise = $_GET['type'];
+	$expertise_per = "%$expertise%";
 
-$sql = "SELECT * from advocatedetails WHERE Expertise like :Expertise AND City = :City";
-$query = $dbh -> prepare($sql);
-$query->bindParam(':Expertise', $expertise_per, PDO::PARAM_STR);
-$query->bindParam(':City', $city, PDO::PARAM_STR);
-$query->execute();
+	$city_name = $_GET['city_name'];
+	$city_per = "%$city_name%";
 
-$resultCount = $query->rowCount();
-$results = $query->fetchAll(PDO::FETCH_OBJ);
+	$location = $_GET['location'];
+
+	print $city_name;
+	print $location;
+	
+	if (isset($_GET['type'])) {
+		$sql = "SELECT * from advocatedetails WHERE Expertise like :Expertise";
+	} else if (isset($_GET['city_name'])) {
+		$sql = "SELECT * from advocatedetails WHERE City like :City";
+	}
+	$sql = "SELECT * from advocatedetails WHERE Expertise like :Expertise AND City like :City";
+	$query = $dbh -> prepare($sql);
+	$query->bindParam(':Expertise', $expertise_per, PDO::PARAM_STR);
+	$query->bindParam(':City', $city_per, PDO::PARAM_STR);
+	$query->execute();
+
+	$resultCount = $query->rowCount();
+	$results = $query->fetchAll(PDO::FETCH_OBJ);
 
 
-$array = array();
+	$array = array();
 
-foreach($results as $result) { 
-	//print "curl response is:" . $result->AdvocateName;
-	$array[] = $result;
+	foreach($results as $result) { 
+		//print "curl response is:" . $result->AdvocateName;
+		$array[] = $result;
+	}
 }
+
 ?>
 
 <!DOCTYPE HTML>
@@ -55,6 +70,7 @@ foreach($results as $result) {
 <link rel="apple-touch-icon-precomposed" href="assets/images/favicon-icon/apple-touch-icon-57-precomposed.png">
 <link rel="shortcut icon" href="assets/images/favicon-icon/favicon.png">
 <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+<script src="assets/js/jquery.min.js"></script>
 
 <script type="text/javascript">
 function searchAdvocate() {
@@ -74,7 +90,7 @@ function searchAdvocate() {
     <div class="col-md-12">
     <div class="jumbotron text-center" style=" background-color:#498fff;margin-bottom: -1px; margin-left: 0px;width:102.5%">
       <h2 class="section-header text-center" style="color: #ffffff;margin-bottom:-30px">Find the Best Advocates<span> Near you!</span></h2>
-       <form id="frmSearchAdv" action="all-profile.php">
+       <form id="frmSearchAdv">
         <div class="container">      
       <div class="row">
     <div class="col-sm-2 col-md-offset-2">
@@ -97,7 +113,19 @@ function searchAdvocate() {
     </div>
 	<div class="col-sm-6 col-xm-3">
          <div class="input-group input-group-lg">
-            <input type="text" id="city" class="form-control" placeholder="location" name="city" value="<?php echo $city; ?>">
+			<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyClvpI-xbAjvuOWeVJrONXJTLbT8bHsMtk&sensor=false&libraries=places"></script>
+			<script type="text/javascript">
+				google.maps.event.addDomListener(window, 'load', function () {
+					var places = new google.maps.places.Autocomplete(document.getElementById('location'));
+					google.maps.event.addListener(places, 'place_changed', function () {
+						var place = places.getPlace();
+						var city = place.address_components[0].long_name;
+						$('#city_name').val(city);
+					});
+				});
+			</script>
+			<input type="hidden" id="city_name" name="city_name" class="form-control" value="<?php echo $city_name; ?>">
+            <input type="text" id="location" class="form-control" placeholder="location" name="location" value="<?php echo $location; ?>">
             <span class="input-group-addon"><a onclick="searchAdvocate()"><span class="glyphicon glyphicon-search"></span></a></span>
 			
           </div>

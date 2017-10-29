@@ -325,7 +325,7 @@ a:hover {
     <div class="col-md-12">
     <div class="jumbotron text-center" style="margin-top: -16.3%; background-color:#252526;">
       <h2 class="section-header text-center" style="color: #FFBC51;margin-bottom:-30px">Find the Best Advocates<span> <font style="color: #fff">Near you!</font></span></h2>
-         <form id="frmSearchAdv" action="all-profile.php" action="POST">
+         <form id="frmSearchAdv" action="all-profile.php" action="post">
         <div class="container">      
       <div class="row">
     <div class="col-sm-2 col-md-offset-2">
@@ -349,7 +349,26 @@ a:hover {
   </div>
     <div class="col-sm-6 col-xm-3">
          <div class="input-group input-group-lg">
-            <input type="text" id="city" class="form-control" placeholder="location" name="city">
+			<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyClvpI-xbAjvuOWeVJrONXJTLbT8bHsMtk&sensor=false&libraries=places"></script>
+			<script type="text/javascript">
+				google.maps.event.addDomListener(window, 'load', function () {
+					var places = new google.maps.places.Autocomplete(document.getElementById('location'));
+					google.maps.event.addListener(places, 'place_changed', function () {
+						var place = places.getPlace();
+						var city = place.address_components[0].long_name;
+						$('#city_name').val(city);
+						/*var address = place.formatted_address;
+						var latitude = place.geometry.location.lat();
+						var longitude = place.geometry.location.lng();
+						var mesg = "Address: " + address;
+						mesg += "\nLatitude: " + latitude;
+						mesg += "\nLongitude: " + longitude;
+						//alert(mesg);*/
+					});
+				});
+			</script>
+			<input type="hidden" id="city_name" name="city_name">
+            <input type="text" id="location" class="form-control" placeholder="location" name="location">
             <span class="input-group-addon"><a onclick="searchAdvocate()"><span class="glyphicon glyphicon-search"></span></a></span>
           </div>
     </div>
@@ -719,12 +738,12 @@ EXPERIENCE</p>
 <script src="assets/js/slick.min.js"></script> 
 <script src="assets/js/owl.carousel.min.js"></script> 
 
-    <script type="text/javascript">
+    <!--<script type="text/javascript">
       function activatePlacesSearch(){
         var input document.getElementById('city');
         var autocomplete = new google.maps.places.Autocomplete(input);
       }
     </script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqt53eRNuhV9550UnBfs-8sZbnMs55lac=places&callback=activatePlacesSearch"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClvpI-xbAjvuOWeVJrONXJTLbT8bHsMtk&callback=activatePlacesSearch"></script>-->
 </body>
 </html>
