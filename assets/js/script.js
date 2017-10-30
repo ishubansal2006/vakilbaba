@@ -307,7 +307,151 @@ $('document').ready(function(){
 		return false;	
 	});
 
+	$('.register-customer').on('click',function(){
+		var btn = $(this);
+		
+		var name       = $('input[name="name"]').val();
+		if (name === "") {
+			$('input[name="name"]').css("border-color", "red");
+			$('input[name="name"]').focus();
+			$('.error').html('please enter name!!');
+			return false;
+		} else {
+			$('input[name="name"]').css("border-color", "initial");
+		}
+		
+		var email      = $('input[name="email"]').val();
+		if (email === "") {
+			$('input[name="email"]').css("border-color", "red");
+			$('input[name="email"]').focus();
+			$('.error').html('Please enter Email!!');
+			return false;
+		} else {
+			if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))  {
+				$('input[name="email"]').css("border-color", "initial");
+			} else {
+				$('input[name="email"]').css("border-color", "red");
+				$('input[name="email"]').focus();
+				$('.error').html('Please enter Valid Email!!');
+				return false;				
+			}
+		}
+		
+		var mobile     = $('input[name="mobile"]').val();
+		if (mobile === "") {
+			$('input[name="mobile"]').css("border-color", "red");
+			$('input[name="mobile"]').focus();
+			$('.error').html('Please enter Mobile!!');
+			return false;
+		} else {
+			if (!mobile.match('[0-9]{10}')) {
+				$('input[name="mobile"]').css("border-color", "red");
+				$('input[name="mobile"]').focus();
+				$('.error').html('Please enter Valid Mobile!!');
+				return false;
+			} else {
+				$('input[name="mobile"]').css("border-color", "initial");
+			}
+		}
+		
+		var address    = $('input[name="address"]').val();
+		if (address === "") {
+			$('input[name="address"]').css("border-color", "red");
+			$('input[name="address"]').focus();
+			$('.error').html('Please enter Address!!');
+			return false;
+		} else {
+			$('input[name="address"]').css("border-color", "initial");
+		}
+		
+		var city       = $('input[name="city"]').val();
+		if (city === "") {
+			$('input[name="city"]').css("border-color", "red");
+			$('input[name="city"]').focus();
+			$('.error').html('Please enter City!!');
+			return false;
+		} else {
+			$('input[name="city"]').css("border-color", "initial");
+		}
+		
+		var password   = $('input[name="password"]').val();
+		if (password === "") {
+			$('input[name="password"]').css("border-color", "red");
+			$('input[name="password"]').focus();
+			$('.error').html('Please enter Password!!');
+			return false;
+		} else {
+			$('input[name="password"]').css("border-color", "initial");
+		}
+		
+		var retype     = $('input[name="retype"]').val();
+		if (retype === "") {
+			$('input[name="retype"]').css("border-color", "red");
+			$('input[name="retype"]').focus();
+			$('.error').html('Please enter Retype!!');
+			return false;
+		} else {
+			$('input[name="retype"]').css("border-color", "initial");
+		}
 
+		if (password !== retype) {
+			$('.error').html('password did not matched !');
+			return false;
+		}
+
+		if (name==''||email==''||mobile==''||address==''||city==''||password==''||retype=='') {
+
+			$('.error').html('please fill all the fields !!')
+			return false;
+		}
+		
+		$.ajax({
+
+			type : 'POST',
+			url : 'ajax.php',
+			data: { 
+				'register-customer' : 'register-customer',
+				 name      : name      ,
+				 email     : email     ,
+				 mobile    : mobile    ,
+				 address   : address   ,
+				 city      : city      ,
+				 password  : password  ,
+		    },
+			beforeSend:  function() {
+				$('.error').html('');
+				btn.val('Please wait...');
+
+			},
+			success :function(html) {
+				btn.val('Submit');
+
+				console.log(html);
+				var data = $.parseJSON(html);
+
+				if (data.status=='success') {
+
+					$('.success').html('Successfuly registered! ');
+					
+					reset();
+					/*setTimeout(function(){
+					
+						$('.success').hide();
+
+					}, 5000);*/
+
+				} else {
+					$('.error').html(data.error);
+
+				}
+
+
+			}
+		});
+
+
+		return false;	
+	});
 
 	$(document).on('change', '#image_upload_file', function () {
 
