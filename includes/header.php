@@ -60,7 +60,7 @@ session_start();
                                  <a href="" class="dropdown-toggle login_btn btn-xs uppercase" data-hover="dropdown" data-toggle="dropdown" style="background-color: #FFBC51; ">Customer <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="" runat="server">Login</a></li>
-                                    <li><a href="" runat="server">SignUp</a></li>
+                                    <li><a href="customer-signup.php" runat="server">SignUp</a></li>
                                 </ul>
                             </li></ul>
  <!-- <div class="login_btn"> <a href="advocate-signup.php" class="btn btn-xs uppercase" style="background-color: #FFBC51; ">Advocate Panel</a></div>
