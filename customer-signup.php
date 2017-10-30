@@ -58,11 +58,11 @@
           </div>    
           <div class="form-group">
             <label for="name">Retype Password:</label>
-            <input type="password" name="retypepass" id="retypepass" placeholder="Retype Password" class="form-control" required/>
+            <input type="password" name="retype" id="retypepass" placeholder="Retype Password" class="form-control" required/>
           </div>
           <div class="form-group">
             <input type="hidden" name="image" value=''>
-            <input type="submit" name="signup" class="btn btn-primary" style="background-color: #FFBC51; color: #000">
+            <input type="submit" name="signup" class="btn btn-primary register-customer" style="background-color: #FFBC51; color: #000">
             <p class="error text-danger"></p>
             <p class="success text-success"></p>
           </div>
