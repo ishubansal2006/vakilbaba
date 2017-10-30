@@ -48,6 +48,38 @@ if (isset($_POST['register'])) {
 
 	echo json_encode($output);
 }
+else if(isset($_POST['register-customer'])) {
+
+	$name       =      escape_string($_POST['name']);
+	$email      =      escape_string($_POST['email']);
+	$mobile     =      escape_string($_POST['mobile']);
+	$address    =      escape_string($_POST['address']);
+	$city       =      escape_string($_POST['city']);
+	$password   =    md5(escape_string($_POST['password']));
+	
+	$output = array('status'=>'false','error'=>'');
+	
+	if (get_customer_by_email($email)) {
+		
+		$output['error'] = 'Email address already exists !';
+	
+	} else {
+
+		$sql="INSERT INTO customerdetails(Name, Email, Mobile, Address, City, Password)VALUES( '{$name}', '{$email}', '{$mobile}', '{$address}',  '{$city}', '{$password}')";
+
+		$result = mysqli_query($db, $sql);
+		echo mysqli_error($db);
+		// echo $sql;
+		confirm($result);
+		
+		sendEmail($email, $name, $mobile, $address);
+
+		$output['status'] = 'success';
+		$output['error'] = '';
+	}
+
+	echo json_encode($output);
+}
 
 	function sendEmail($email, $name, $mobile, $address) {
 		$mail = new PHPMailer();
