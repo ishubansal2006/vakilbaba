@@ -22,7 +22,18 @@ function escape_string($string) {
 
 	return mysqli_real_escape_string($db,$string);
 }
+function get_customer_by_email($email){
+	global $db;
 
+	$query = "SELECT * FROM customerdetails WHERE Email = '{$email}'";
+	$result = mysqli_query($db, $query);
+
+	if ($user = mysqli_fetch_assoc($result)) {
+		
+		return true;
+	}
+
+}	
 function get_user_by_email($email){
 	global $db;
 
