@@ -4,7 +4,7 @@ include('includes/config.php');
 error_reporting(0);
 
 
-$sql = "SELECT * from advocatedetails LIMIT 24";
+$sql = "SELECT * from advocatedetails";
 $query = $dbh -> prepare($sql);
 $query->execute();
 
@@ -16,7 +16,7 @@ $car_array2 = array();
 
 $count = 0;
 foreach($results as $result) {
-	if ($count < 12) {
+	if ($count < 20) {
 		$car_array1[] = $result;
 	} else {
 		$car_array2[] = $result;
@@ -116,16 +116,16 @@ a:hover {
                       </li>
                       </a>
 
-                    <a href="#">     
+                    <a href="Leagal-notice.php">     
                     <li class="colm-li">
                        <i class="fa  fa-sticky-note fa-2x " style="margin-left: 8px"></i><br><br>
                        <p>Legal Notice</p>
                       </li></a>
 
-                    <a href="#">
+                    <a href="Email-Enquiery.php">
                    <li class="colm-li">
                        <i class="fa fa-envelope fa-2x " style="margin-left: 8px"></i><br><br>
-                       <p>Email Delivery</p>
+                       <p>Email Enquiry</p>
                       </li></a>
                     
                   </ul>
@@ -155,7 +155,7 @@ a:hover {
                  <div style="padding-bottom: 20px">
                   <center>
                    <button type="button" class="btn" style="background-color: #FFBC51">
-                    <a href="all-services.php">More Services</a></button>
+                    <a href="all-services.php"><font color="#000">More Services</font></a></button>
                    </center>
                  </div> 
                  
@@ -214,7 +214,7 @@ a:hover {
                   <div style="padding-bottom: 20px">
                   <center>
                    <button type="button" class="btn" style="background-color: #FFBC51">
-                    <a href="all-services.php">More Services</a></button>
+                    <a href="all-services.php"><font color="#000">More Services</font></a></button>
                    </center>
                  </div>
 
@@ -258,13 +258,13 @@ a:hover {
 
                     <a href="services_page.php?service_type=Loan&service_id=5">     
                     <li class="colm-li">
-                       <i class="fa  fa-home fa-2x " style="margin-left: 8px"></i><br><br>
+                       <i class="fa  fa-inr fa-2x " style="margin-left: 8px"></i><br><br>
                        <p>Smart Cash</p>
                       </li></a>
 
                     <a href="services_page.php?service_type=Loan&service_id=6">
                    <li class="colm-li">
-                       <i class="fa fa-trademark fa-2x " style="margin-left: 8px"></i><br><br>
+                       <i class="fa fa-home fa-2x " style="margin-left: 8px"></i><br><br>
                        <p>Home Loan</p>
                       </li></a>
                     
@@ -273,7 +273,7 @@ a:hover {
                   <div style="padding-bottom: 20px">
                   <center>
                    <button type="button" class="btn" style="background-color: #FFBC51">
-                   <a href="all-services.php">More Services</a></button>
+                   <a href="all-services.php"><font color="#000">More Services</font></a></button>
                    </center>
                  </div>
 
@@ -424,7 +424,7 @@ a:hover {
 							<div class="panel panel-warning">
 							<div class="panel-heading"></div>
 							  <div class="panel-body">
-							  <a href="advocate-profile.php?id=<?php echo $row->Id; ?>"><img width="205.5" height="137" src="<?= $row->image == NULL ? 'assets\images\man.png' : 'uploades/medium/'.$row->image;?>" alt=""></a>
+							  <a href="advocate-profile.php?id=<?php echo $row->Id; ?>"><img width="205.5" height="137" src="<?= $row->image == NULL ? 'assets\images\advocates\default.png' : 'uploades/medium/'.$row->image;?>" alt=""></a>
 							  </div>
 							<div class="panel-footer">
 								<span style="font-size:14px;"><?php echo $row->AdvocateName; ?></span>
@@ -467,7 +467,7 @@ a:hover {
 							<div class="panel panel-warning">
 							<div class="panel-heading"></div>
 							  <div class="panel-body">
-							  <a href="advocate-profile.php?id=<?php echo $row->Id; ?>"><img width="205.5" height="137" src="<?= $row->ProfileImage == NULL ? 'assets\images\man.png' : $row->ProfileImage;?>" alt=""></a>
+							  <a href="advocate-profile.php?id=<?php echo $row->Id; ?>"><img width="205.5" height="137" src="<?= $row->image == NULL ? 'assets\images\advocates\default.png' : 'uploades/medium/'.$row->image;?>" alt=""></a>
 							  </div>
 							<div class="panel-footer">
 								<span style="font-size:14px;"><?php echo $row->AdvocateName; ?></span>
@@ -497,7 +497,7 @@ a:hover {
     <div class="jumbotron">
 
       <div class="row text-center">
-          <h2>Why Choose Us?</h2>
+          <h2 class="section-header text-center">Why Choose Us?</h2>
           <div class="col-sm-2 col-md-2 col-md-offset-1">
             <div class="icon-box iconbox-theme-colored bg-lighter">
               <span class="icon icon-dark icon-bordered icon-rounded icon-border-effect effect-rounded" >
@@ -558,14 +558,15 @@ EXPERIENCE</p>
 <section>
   <div class="container-liquid" style="background-color: #fff; border-top: 2px solid red; border-bottom: 2px solid red">
     <div class="row">
-   <h1><center>Do you need Help?</center></h1>
+   <h1 class="section-header text-center" style="margin-bottom:-40px"><center>Do you need Help?</center></h1>
    <center>
    <p>Feel free to consult us on any legal matter, Vakilbaba is always there for you.</p>
-   
    </center>
- </div>
    <div style="padding-bottom: 50px">
-     <center><button type="button" class="btn btn-warming" style="background-color: #FFBC51; color: #000" data-toggle="modal" data-target="#myModal">Contact Us</button></center>
+     <center>
+     <h2><i fa fa-phone 2-x></i> <a href="tel:+91-7900127900" style="color:#000"> +91- 7900127900</a></h2>
+     <button type="button" class="btn btn-warming" style="background-color: #FFBC51; color: #000" data-toggle="modal" data-target="#myModal">Contact Us</button></center>
+     </div>
    </div>
      <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">
@@ -657,28 +658,28 @@ EXPERIENCE</p>
 </section>
  
 <!--Our partner-->
-<section style="background-color: #000000" style="margin-top: -10px">
+<section style="background-color: #fff" style="margin-top: -10px">
 <div class="container div_zindex">
     <div class="section-header black-text text-center">
-      <h2 style="color: #fff">Our <span>Partner</span></h2>
+      <h2 style="color: #000"><u>Our <span>Partner</u></span></h2>
       <div class="item">
       <div class="col col-md-2">
-      <img src="assets/images/W3Schools_logo.png">
+      <img src="assets/images/company.com_logo1.png">
     </div>
     <div class="col col-md-2">
-      <img src="assets/images/W3Schools_logo.png">
+      <img src="assets/images/company.com_logo1.png">
     </div>
     <div class="col col-md-2">
-      <img src="assets/images/W3Schools_logo.png">
+      <img src="assets/images/company.com_logo1.png">
     </div>
     <div class="col col-md-2">
-      <img src="assets/images/W3Schools_logo.png">
+      <img src="assets/images/company.com_logo1.png">
     </div>
     <div class="col col-md-2">
-      <img src="assets/images/W3Schools_logo.png">
+      <img src="assets/images/company.com_logo1.png">
     </div>
     <div class="col col-md-2">
-      <img src="assets/images/W3Schools_logo.png">
+      <img src="assets/images/company.com_logo1.png">
     </div>
 
     </div>
@@ -687,9 +688,9 @@ EXPERIENCE</p>
 <!--/our partner>
 <!--Press release-->
 
-<div class="jumbotron" style="background-color: #84baf6; margin-bottom: -10px">
+<div class="jumbotron" style="background-color: #FFBC51; margin-bottom: -10px">
     <div class="section-header black-text text-center">
-      <h2>Press <span>Release</span></h2>
+      <h2><u>Press <span>Release</span></u></h2>
       <div class="col col-md-3">
       <img src="assets/images/W3Schools_logo.png">
     </div>

@@ -1,11 +1,11 @@
 <?php 
 // DB credentials.
 define('DB_HOST','localhost');
-define('DB_USER','root');
-define('DB_PASS','');
+define('DB_USER','adminvakilbaba');
+define('DB_PASS','adminvakilbaba');
 //define('DB_USER','apptelin_vakil');
 //define('DB_PASS','apptelin_vakil');
-define('DB_NAME','advocate');
+define('DB_NAME','vakilbaba_db');
 // Establish database connection.
 try
 {

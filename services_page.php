@@ -309,7 +309,7 @@ foreach($results as $result) {
 	  </div>
 	</div>
 	</section>
-	<section id="#registration">
+	<!--<section id="#registration">
 	<div class="container">
 	  <div class="row">
 		<center><h2>What Include?</h2></center>
@@ -318,7 +318,7 @@ foreach($results as $result) {
 		</p>
 	  </div>
 	</div>
-	</section>
+	</section> -->
 	<section id="#registration">
 	<div class="container">
 	  <div class="row">

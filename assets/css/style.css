@@ -5492,7 +5492,7 @@ h5 {
 
 
 .bg-lightest {
-  background-color:#fff !important;
+  background-color:rgba(255, 255, 255, 0.89) !important;
 }
 body {
     line-height: 1.7;
@@ -5909,6 +5909,6 @@ display: table !important;}}
 }
 #banner
 {
-	    margin-top: 165px !important;
+	    margin-top: auto;
 }
 }

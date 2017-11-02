@@ -60,10 +60,10 @@ else{
   <!--Header-->
 <?php include('includes/header.php');?>
 <!-- /Header --> 
-<section style="margin-top: 70px; background-color:#f2f2f2">
+<section style="margin-top: 90px; background-color:#f2f2f2">
   <div class="container">
   <div class="col-md-12" style="text-align: center;">
-    <h3>Ask For Legal Help</h3>
+    <h3>Ask For <strong>Legal Help</h3>
     <p style="text-align: justify;">Stuck with a legal issue? Submit your query below to get FREE answers through email within a few hours. Expert legal advice from top rated lawyers in your city enables you to take better decisions about your legal situation.</p>
   </div>
   </div>
@@ -74,10 +74,9 @@ else{
    <form class="form-horizontal" action="">
     <div class="form-group">
             <div class="pull-left" style="margin-left: 15px">
-  <label class="control-label" for="pwd">Area of Law<span class="required">*</span></label>
-</div>
+      <label class="control-label" for="pwd">Area of Law<span class="required">*</span></label></div>
               <div class="col-sm-12">
-            <select name="category" id="category" class="form-control" name="category" required/>
+              <select name="category" id="category" class="form-control" name="category" required/>
                  <option value="">Select Area of law</option>
                   <option value="civil">Civil</option>
                   <option value="criminal">Criminal</option>
@@ -91,8 +90,8 @@ else{
                   <option value="chequebounce">Cheque bounce/fraud</option>
                   <option value="cyberlaws">Cyber Laws</option>
                   <option value="propertylaw">Property Law</option> 
-              </select>
-              </div>
+                   </select>
+                            </div>
                           </div><br>
     <div class="form-group">
       <div class="pull-left">
@@ -107,7 +106,7 @@ else{
       <label class="control-label col-sm-2" for="Subject">Subject<span class="required">*</span></label>
       </div>
       <div class="col-sm-12">
-       <input type="Text" name="subject" class="form-control" id="Subject" placeholder="Enter the subject">
+        <input type="Text" name="subject" class="form-control" id="Subject" placeholder="Enter the subject"
       </div>
     </div>
     <div class="form-group">
@@ -153,18 +152,17 @@ else{
   </form>
 </center>
   </div>
-  </div>
-</div>
+  <div>
     <div class="col-md-5">
       <div class="row">
         <div class="col-md-12">
           <div class="well-box" style="background-color:#ffffff; border:1px solid grey">
             <center><i class="fa fa-user fa-4x" aria-hidden="true" style="color: orange;padding-top: 10px"></i>
-            <h4><u>Talk to Lawyer</u></h4>
-            <p style="font-size: 18px">Book a phone / meeting consultation with a top rated lawyer in your city to get detailed opinion on your legal problem starting @ Rs.500 only.</p></center>
+            <h4><u>Dont worry?</u></h4>
+            <p style="font-size: 18px">Book a phone call / meeting consultation with a top rated Justics in your city to get detailed opinion on your legal problem starting @ Rs.500 only.</p></center>
             <div class="row">
               <div class="col-md-3" style="margin-left: 120px">
-                <center><button type="button" class="btn" style="background-color: #FFBC51; color: #000">Talk to Lawyer</button></center>
+                <center><button type="button" class="btn" style="background-color: #FFBC51; color: #000">Talk to Advocate!</button></center>
               </div>
 
             </div>
@@ -179,7 +177,6 @@ else{
 </div>
 </div>
 </section>
-
 <section>
 <?php include('includes/footer.php');?>
 </section>

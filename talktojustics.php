@@ -60,7 +60,7 @@ else{
   <!--Header-->
 <?php include('includes/header.php');?>
 <!-- /Header --> 
-<section style="margin-top: 70px; background-color:#f2f2f2">
+<section style="margin-top: 90px; background-color:#f2f2f2">
   <div class="container">
   <div class="col-md-12" style="text-align: center;">
     <h3>Talk to <strong>Justics</h3>
@@ -106,7 +106,7 @@ else{
       <label class="control-label col-sm-2" for="Subject">Subject<span class="required">*</span></label>
       </div>
       <div class="col-sm-12">
-        <input type="Text" name="subject" class="form-control" id="Subject" placeholder="Enter the subject"
+        <input type="text" name="subject" class="form-control" id="Subject" placeholder="Enter the subject" required/>
       </div>
     </div>
     <div class="form-group">

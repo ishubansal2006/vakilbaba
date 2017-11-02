@@ -223,8 +223,10 @@ body {
                 <li class="list-group-item text-right"><span class="pull-left"><strong class="">Expertise</strong></span>
 					<?= $array[0]->Expertise == NULL ? '' : $array[0]->Expertise; ?>
 				</li>
-               <!-- <li class="list-group-item text-right"><span class="pull-left"><strong class="">City</strong></span> 
-					<?= $array[0]->City == NULL ? '' : $array[0]->City; ?>-->
+                <li class="list-group-item text-right"><span class="pull-left"><strong class="">City</strong></span> 
+					<?= $array[0]->City == NULL ? '' : $array[0]->City; ?>
+		<li class="list-group-item text-right"><span class="pull-left"><strong class="">Consultant Fee</strong></span> 
+					<?= $array[0]->City == NULL ? '' : $array[0]->ConsultantFee; ?>
 				</li>
 			<!--	<li class="list-group-item text-right"><span class="pull-left"><strong class="">Fee</strong></span> 
 					Rs. <?= $array[0]->Fee == NULL ? '0' : $array[0]->Fee; ?>

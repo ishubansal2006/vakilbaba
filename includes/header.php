@@ -13,8 +13,8 @@ session_start();
       <div class="header_wrap  pull-right">
 	  
         <div class="user_login" style="font-size: 15px; border:none; color: #fff; font-size: 18px; font-weight: bold;">
-          <i class="fa fa-phone" style="font-size:15px; margin-right:3px;">+91- 7900127900</i><br>
-          <i class="fa fa-envelop" style="font-size:15px;">support@vakilbaba.com</i>
+          <i class="fa fa-phone" style="font-size:15px; margin-right:3px;">+91- 7900127900 </i><br>
+          <i class="fa fa-envelope" style="font-size:15px;"> support@vakilbaba.com</i>
          
         </div>
       </div>
@@ -59,7 +59,7 @@ session_start();
 							<li class="dropdown">
                                  <a href="" class="dropdown-toggle login_btn btn-xs uppercase" data-hover="dropdown" data-toggle="dropdown" style="background-color: #FFBC51; ">Customer <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="" runat="server">Login</a></li>
+                                    <li><a href="customer-login.php" runat="server">Login</a></li>
                                     <li><a href="customer-signup.php" runat="server">SignUp</a></li>
                                 </ul>
                             </li></ul>
