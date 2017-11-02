@@ -5912,3 +5912,14 @@ display: table !important;}}
 	    margin-top: auto;
 }
 }
+.carousel-control.left, .carousel-control.right {
+    background: none repeat scroll 0 0 rgba(0,0,0,0) !important;
+    filter: none;
+}
+.carousel-control {
+    top: 34%;
+    position: absolute;
+}
+.fa-angle-right:active, .fa-angle-left:active , .fa-angle-right:hover, .fa-angle-left:hover, .fa-angle-right:focus,.fa-angle-left:focus{
+	color:black;
+}

@@ -404,7 +404,7 @@ a:hover {
 </script>
 <div class="container">
 <div class="col-xs-12">
-    <div class="carousel slide" id="myCarousel">
+    <div class="carousel slide" id="myCarousel1">
         <div class="carousel-inner">
 		
 		<?php
@@ -441,14 +441,19 @@ a:hover {
      <!-- /.control-box -->   
                               
     </div><!-- /#myCarousel -->
-        
+   <a class="carousel-control left" href="#myCarousel1" data-slide="prev">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                <a class="carousel-control right" href="#myCarousel1" data-slide="next">
+                    <i class="fa fa-angle-right"></i>
+                </a>     
 </div><!-- /.col-xs-12 -->          
 
 </div><!-- /.container -->
 <!--end by shyam-->
 <div class="container">
 <div class="col-xs-12">
-    <div class="carousel slide" id="myCarousel">
+    <div class="carousel slide" id="myCarousel2">
         <div class="carousel-inner">
         <?php
 			$index = 0;
@@ -484,7 +489,12 @@ a:hover {
      <!-- /.control-box -->   
                               
     </div><!-- /#myCarousel -->
-        
+         <a class="carousel-control left" href="#myCarousel2" data-slide="prev">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                <a class="carousel-control right" href="#myCarousel2" data-slide="next">
+                    <i class="fa fa-angle-right"></i>
+                </a>  
 </div><!-- /.col-xs-12 -->          
 
 </div><!-- /.container -->
