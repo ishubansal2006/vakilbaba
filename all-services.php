@@ -38,6 +38,8 @@ $error="Something went wrong. Please try again";
 <title>Vakilbaba|anytime,anywhere</title>
 <!--Bootstrap -->
 <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="assets/css/style.css" type="text/css">
+<script src="assets/js/jquery.min.js"></script>
 <!--Custome Style -->
 <link rel="stylesheet" href="assets/css/style.css" type="text/css">
 <!--OWL Carousel slider-->
