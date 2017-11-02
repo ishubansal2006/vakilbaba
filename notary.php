@@ -1,5 +1,6 @@
 <?php 
 session_start();
+include('includes/config.php');
 error_reporting(0);
 ?>
 
@@ -13,6 +14,8 @@ error_reporting(0);
 <meta name="description" content="">
 <title>Vakil baba- Best vakil services</title>
 <!--Bootstrap -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script> 
 <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
 <link rel="stylesheet" href="assets/css/style.css" type="text/css">
 <link rel="stylesheet" href="assets/css/owl.carousel.css" type="text/css">
