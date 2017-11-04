@@ -155,7 +155,7 @@ a:hover {
                  <div style="padding-bottom: 20px">
                   <center>
                    <button type="button" class="btn" style="background-color: #FFBC51">
-                    <a href="all-services.php"><font color="#000">More Services</font></a></button>
+                    <a href="services_page.php?service_type=Legal&service_id=0"><font color="#000">More Services</font></a></button>
                    </center>
                  </div> 
                  
@@ -214,7 +214,7 @@ a:hover {
                   <div style="padding-bottom: 20px">
                   <center>
                    <button type="button" class="btn" style="background-color: #FFBC51">
-                    <a href="all-services.php"><font color="#000">More Services</font></a></button>
+                    <a href="services_page.php?service_type=Account&service_id=0"><font color="#000">More Services</font></a></button>
                    </center>
                  </div>
 
@@ -273,7 +273,7 @@ a:hover {
                   <div style="padding-bottom: 20px">
                   <center>
                    <button type="button" class="btn" style="background-color: #FFBC51">
-                   <a href="all-services.php"><font color="#000">More Services</font></a></button>
+                   <a href="services_page.php?service_type=Loan&service_id=0"><font color="#000">More Services</font></a></button>
                    </center>
                  </div>
 
