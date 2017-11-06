@@ -274,6 +274,7 @@ $('document').ready(function(){
 		    },
 			beforeSend:  function() {
 				$('.error').html('');
+				$('.success').html('');
 				btn.val('Please wait...');
 
 			},

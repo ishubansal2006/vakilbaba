@@ -24,6 +24,7 @@ if (isset($_POST['register'])) {
 	$about      =      escape_string($_POST['bio']);
 	$image      =      escape_string($_POST['image']);
 	$password   =    md5(escape_string($_POST['password']));
+	$rand_num = 0;
 	
 	$output = array('status'=>'false','error'=>'');
 	
@@ -33,14 +34,18 @@ if (isset($_POST['register'])) {
 	
 	} else {
 
-		$sql="INSERT INTO advocatedetails(AdvocateName, Gender, Email, Mobile, Language, Address, Pin, City, State, Expertise, Experience, Court, Barcode, TelephoneConsultantFee,	ConsultantFee, CaseFilingFee, Password, About, image)VALUES( '{$name}', '{$gender}', '{$email}', '{$mobile}', '{$language}', '{$address}', '{$pin}', '{$city}', '{$state}', '{$expertise}', '{$experience}', '{$court}', '{$barcode}', '{$telephone}', '{$meeting}', '{$casefee}', '{$password}', '{$about}', '{$image}')";
+		$rand_num = mt_rand(100000, 999999);
+		$sql="INSERT INTO advocatedetails(AdvocateName, Gender, Email, Mobile, Language, Address, Pin, City, State, Expertise, Experience, Court, Barcode, TelephoneConsultantFee,	ConsultantFee, CaseFilingFee, Password, About, image, VerifyEmailCode)VALUES( '{$name}', '{$gender}', '{$email}', '{$mobile}', '{$language}', '{$address}', '{$pin}', '{$city}', '{$state}', '{$expertise}', '{$experience}', '{$court}', '{$barcode}', '{$telephone}', '{$meeting}', '{$casefee}', '{$password}', '{$about}', '{$image}', '{$rand_num}')";
 
 		$result = mysqli_query($db, $sql);
+		$advId = mysqli_insert_id($db);
 		echo mysqli_error($db);
 		// echo $sql;
 		confirm($result);
 		
+		
 		sendEmail($email, $name, $mobile, $address);
+		sendVerifyEmail($email, $name, $mobile, $address, $rand_num, $advId);
 
 		$output['status'] = 'success';
 		$output['error'] = '';
@@ -93,7 +98,7 @@ else if(isset($_POST['register-customer'])) {
 
 		$mail->From = 'admin@vakilbaba.com';
 		$mail->FromName = 'vakilbaba Admin';
-		$mail->AddAddress($email);
+		$mail->AddAddress('support@vakilbaba.com');
 		$mail->Subject = 'New User Signup';
 		
 		$data = "\r\n A new user has signed up. Details of the user are :-\r\n\r\n Email: ".$email."\r\n Name: ".$name."\r\n Mobile No: ".$mobile."\r\n Address: ".$address."\r\n\r\n Regards,\r\n Vakilbaba Admin";
@@ -109,6 +114,38 @@ else if(isset($_POST['register-customer'])) {
 			file_put_contents("error/error.txt", "\r\n".date("Y-m-d H:i:s"). " Email successfully sent for a new user signup with email :".$email. " ", FILE_APPEND);
 		} else {
 			file_put_contents("error/error.txt", "\r\n".date("Y-m-d H:i:s"). " Error occurred in sending email for a new user signup with email :".$email. " ", FILE_APPEND);
+		}
+	}
+	
+	function sendVerifyEmail($email, $name, $mobile, $address, $code, $advocateId) {
+		$mail = new PHPMailer();
+		$mail->IsSMTP();
+		$mail->Host = 'mail.vakilbaba.com';
+		$mail->SMTPSecure = 'tls';
+		$mail->Port = 587;
+		$mail->SMTPAuth = true;
+		$mail->Username = 'admin@vakilbaba.com';
+		$mail->Password = 'admin@123';
+
+		$mail->From = 'admin@vakilbaba.com';
+		$mail->FromName = 'vakilbaba Admin';
+		$mail->AddAddress($email);
+		$mail->Subject = 'Please Confirm your Email';
+		$link = "http://localhost/vakilbaba/verify-email.php?verifyCode=".$code."&id=".$advocateId;
+		
+		$data = "\r\n Hi ".$name.", \r\n\r\nThere was recently a request to register your account. Please activate your account by following the link bellow:\r\n ".$link."\r\n\r\n Regards,\r\n Vakilbaba Admin";
+		$mail->Body = $data;
+		$mail->SMTPOptions = array(
+			'ssl' => array(
+				'verify_peer' => false,
+				'verify_peer_name' => false,
+				'allow_self_signed' => true
+			));
+		
+		if($mail->send()) {
+			file_put_contents("error/error.txt", "\r\n".date("Y-m-d H:i:s"). " Verify Email successfully sent :".$email. " ", FILE_APPEND);
+		} else {
+			file_put_contents("error/error.txt", "\r\n".date("Y-m-d H:i:s"). " Error occurred in sending verify email for a new user signup with email :".$email. " ", FILE_APPEND);
 		}
 	}
 
