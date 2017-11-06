@@ -50,7 +50,10 @@ if (isset($_GET['type']) || isset($_GET['city_name'])) {
 <meta name="description" content="">
 <title>Vakil baba- Best vakil services</title>
 <!--Bootstrap -->
+<script src="assets/js/bootstrap.min.js"></script> 
 <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="assets/css/style.css" type="text/css">
+<script src="assets/js/jquery.min.js"></script>
 <link rel="stylesheet" href="assets/css/style.css" type="text/css">
 <link rel="stylesheet" href="assets/css/owl.carousel.css" type="text/css">
 <link rel="stylesheet" href="assets/css/owl.transitions.css" type="text/css">
@@ -70,8 +73,6 @@ if (isset($_GET['type']) || isset($_GET['city_name'])) {
 <link rel="apple-touch-icon-precomposed" href="assets/images/favicon-icon/apple-touch-icon-57-precomposed.png">
 <link rel="shortcut icon" href="assets/images/favicon-icon/favicon.png">
 <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
-<script src="assets/js/jquery.min.js"></script>
-
 <script type="text/javascript">
 function searchAdvocate() {
 	document.getElementById("frmSearchAdv").submit();
