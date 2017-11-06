@@ -5923,3 +5923,11 @@ display: table !important;}}
 .fa-angle-right:active, .fa-angle-left:active , .fa-angle-right:hover, .fa-angle-left:hover, .fa-angle-right:focus,.fa-angle-left:focus{
 	color:black;
 }
+.card
+{
+	width:100% !important;
+}
+.card-block
+{
+	min-height:260px !important;
+}

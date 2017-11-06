@@ -50,10 +50,11 @@ if (isset($_GET['type']) || isset($_GET['city_name'])) {
 <meta name="description" content="">
 <title>Vakil baba- Best vakil services</title>
 <!--Bootstrap -->
+<script src="assets/js/jquery.min.js"></script> 
 <script src="assets/js/bootstrap.min.js"></script> 
 <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
 <link rel="stylesheet" href="assets/css/style.css" type="text/css">
-<script src="assets/js/jquery.min.js"></script>
+
 <link rel="stylesheet" href="assets/css/style.css" type="text/css">
 <link rel="stylesheet" href="assets/css/owl.carousel.css" type="text/css">
 <link rel="stylesheet" href="assets/css/owl.transitions.css" type="text/css">
