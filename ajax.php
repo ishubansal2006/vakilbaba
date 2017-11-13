@@ -25,6 +25,7 @@ if (isset($_POST['register'])) {
 	$image      =      escape_string($_POST['image']);
 	$password   =    md5(escape_string($_POST['password']));
 	$rand_num = 0;
+	$userType=0;
 	
 	$output = array('status'=>'false','error'=>'');
 	
@@ -44,7 +45,7 @@ if (isset($_POST['register'])) {
 		confirm($result);
 		
 		
-		sendEmail($email, $name, $mobile, $address);
+		sendEmail($email, $name, $mobile, $address,$userType);
 		sendVerifyEmail($email, $name, $mobile, $address, $rand_num, $advId);
 
 		$output['status'] = 'success';
@@ -61,6 +62,7 @@ else if(isset($_POST['register-customer'])) {
 	$address    =      escape_string($_POST['address']);
 	$city       =      escape_string($_POST['city']);
 	$password   =    md5(escape_string($_POST['password']));
+	$userType=1;
 	
 	$output = array('status'=>'false','error'=>'');
 	
@@ -77,7 +79,7 @@ else if(isset($_POST['register-customer'])) {
 		// echo $sql;
 		confirm($result);
 		
-		sendEmail($email, $name, $mobile, $address);
+		sendEmail($email, $name, $mobile, $address,$userType);
 
 		$output['status'] = 'success';
 		$output['error'] = '';
@@ -86,7 +88,7 @@ else if(isset($_POST['register-customer'])) {
 	echo json_encode($output);
 }
 
-	function sendEmail($email, $name, $mobile, $address) {
+	function sendEmail($email, $name, $mobile, $address, $userType) {
 		$mail = new PHPMailer();
 		$mail->IsSMTP();
 		$mail->Host = 'mail.vakilbaba.com';
@@ -100,8 +102,14 @@ else if(isset($_POST['register-customer'])) {
 		$mail->FromName = 'vakilbaba Admin';
 		$mail->AddAddress('support@vakilbaba.com');
 		$mail->Subject = 'New User Signup';
-		
+		if($userType==1)
+		{
 		$data = "\r\n A new user has signed up. Details of the user are :-\r\n\r\n Email: ".$email."\r\n Name: ".$name."\r\n Mobile No: ".$mobile."\r\n Address: ".$address."\r\n\r\n Regards,\r\n Vakilbaba Admin";
+		}
+		else
+		{
+			$data = "\r\n A new advocate has signed up. Details of the advocate are :-\r\n\r\n Email: ".$email."\r\n Name: ".$name."\r\n Mobile No: ".$mobile."\r\n Address: ".$address."\r\n\r\n Regards,\r\n Vakilbaba Admin";
+		}
 		$mail->Body = $data;
 		$mail->SMTPOptions = array(
 			'ssl' => array(
